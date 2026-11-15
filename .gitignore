@@ -1,0 +1,10 @@
+# Fichiers propres à chaque machine : jetons, clés, réglages locaux. Jamais dans Git.
+local/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
