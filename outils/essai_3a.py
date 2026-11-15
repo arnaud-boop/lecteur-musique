@@ -8,13 +8,17 @@ Usage : python3 outils/essai_3a.py
 """
 import json
 import subprocess
+import sys
 import time
 from pathlib import Path
 
-from spotify_web import api
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lecteur import config  # noqa: E402
+from lecteur.spotify_web import api  # noqa: E402
 
-PLAYLIST = "1H4H68b72jTyB5rdByrARt"
-NOM_APPAREIL = "Test Soloist"
+CFG = config.charger()
+PLAYLIST = CFG["playlists"][0].rsplit(":", 1)[-1]   # première playlist de local/lecteur.json
+NOM_APPAREIL = CFG["nom_appareil"]
 SOLOIST = [str(Path.home() / "soloist-test" / "soloist"), "ctl", "--ws", "127.0.0.1:9090"]
 
 
